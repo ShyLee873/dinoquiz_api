@@ -1,4 +1,4 @@
-# README
+# Dinoquiz API
 
 A simple Ruby on Rails API that serves dinosaur trivia questions for the BrainBash app.
 
