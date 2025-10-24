@@ -6,7 +6,6 @@ class Question < ApplicationRecord
   validates :answer_index, presence: true,
                            numericality: { only_integer: true }
   validates :difficulty, inclusion: { in: DIFFICULTIES }
-
   validate  :choices_is_non_empty_array
   validate  :answer_index_within_choices
 
