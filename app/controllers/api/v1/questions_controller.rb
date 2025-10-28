@@ -19,7 +19,7 @@ class Api::V1::QuestionsController < ActionController::API
   def create
     q = Question.new(question_params)
     q.save ? render(json: q, status: :created) :
-             render(json: { errors: q.errors.full_messages }, status: :unprocessable_entity)
+             render(json: { errors: q.errors.full_messages }, status: :unprocessable_content)
   end
 
   private
@@ -29,7 +29,7 @@ class Api::V1::QuestionsController < ActionController::API
   end
 
   def exposed_fields
-    %i[id category difficulty prompt choices answer_index] # or hide answer_index for clients!
+    %i[id category difficulty prompt choices answer_index]
   end
 
   def truthy?(v) = ActiveModel::Type::Boolean.new.cast(v)

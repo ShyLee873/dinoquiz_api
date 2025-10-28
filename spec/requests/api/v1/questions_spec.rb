@@ -53,7 +53,7 @@ RSpec.describe "Api::V1::Questions", type: :request do
           answer_index: nil
         }
       }
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       expect(JSON.parse(response.body)["errors"]).to be_present
     end
   end

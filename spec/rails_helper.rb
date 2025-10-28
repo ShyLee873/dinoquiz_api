@@ -35,19 +35,13 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  # Fixtures (optional; safe even if you don't use them)
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # Wrap each example in a transaction
+  config.raise_errors_for_deprecations!
+  config.fixture_paths = [Rails.root.join('spec', 'fixtures')] 
   config.use_transactional_fixtures = true
-
-  # Infer spec type from file location (models/, requests/, etc.)
   config.infer_spec_type_from_file_location!
-
-  # Clean up Rails noise in backtraces
   config.filter_rails_from_backtrace!
 
-  # FactoryBot shortcuts (create, build, etc.)
+  # FactoryBot shortcuts 
   config.include FactoryBot::Syntax::Methods
 
   # JSON helper for request specs
@@ -59,7 +53,7 @@ RSpec.configure do |config|
   config.include JsonHelpers, type: :request
 end
 
-# Shoulda Matchers (MUST be outside the RSpec.configure block)
+# Shoulda Matchers
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
